@@ -13,5 +13,19 @@ install:
 before_script:
   - "pep8 --exclude=migrations --ignore=E501,E225,E261,W191,E101 ."
   - pyflakes -x W .
+  - mkdir reports
+  - export GIT_COMMIT_ID=`git rev-parse HEAD`
+  - mkdir reports/$GIT_COMMIT_ID
 script:
   - python manage.py test_coverage
+after_script:
+  - mkdir /var/tmp/$GIT_COMMIT_ID
+  - cp reports/$GIT_COMMIT_ID /var/tmp/$GIT_COMMIT_ID
+  - rm -rf reports/$GIT_COMMIT_ID
+  - git branch gh-pages
+  - mkdir reports
+  - mkdir reports/$GIT_COMMIT_ID
+  - cp /var/tmp/$GIT_COMMIT_ID reports/$GIT_COMMIT_ID
+  - git add reports/*
+  - git commit -m "reports for $GIT_COMMIT_ID"
+  - git push origin gh-pages
