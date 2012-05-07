@@ -22,7 +22,6 @@ after_script:
   - cp -pR reports/$GIT_COMMIT_ID /var/tmp
   - rm -rf reports/$GIT_COMMIT_ID
   - git branch gh-pages
-  - mkdir reports
   - cp -pR /var/tmp/$GIT_COMMIT_ID reports
   - git add reports/*
   - git commit -m "reports for $GIT_COMMIT_ID"
