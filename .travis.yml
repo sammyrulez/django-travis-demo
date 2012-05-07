@@ -14,4 +14,4 @@ before_script:
   - "pep8 --exclude=migrations --ignore=E501,E225,E261,W191,E101 ."
   - pyflakes -x W .
 script:
-  - python manage.py django_coverage
+  - python manage.py test_coverage
