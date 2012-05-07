@@ -1,5 +1,5 @@
 # Django settings for trango project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -125,6 +125,10 @@ INSTALLED_APPS = (
     'trango.molten_core',
     'django_coverage',
 )
+if os.getenv('GIT_COMMIT_ID'):
+    COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join("reports",os.getenv('GIT_COMMIT_ID'))
+else:
+    COVERAGE_REPORT_HTML_OUTPUT_DIR = 'reports'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
