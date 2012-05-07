@@ -126,7 +126,7 @@ INSTALLED_APPS = (
     'django_coverage',
 )
 if os.getenv('GIT_COMMIT_ID'):
-    COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join("reports",os.getenv('GIT_COMMIT_ID'))
+    COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join("reports" , os.getenv('GIT_COMMIT_ID'))
 else:
     COVERAGE_REPORT_HTML_OUTPUT_DIR = 'reports'
 
